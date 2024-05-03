@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{D9451700-9D7E-4D9F-B2AA-0DD2D3052789}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{40D902B4-EAA8-4ADB-A8D7-B6C89053FA0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{0B8E4121-A3BC-4F1C-954C-F26A8F934667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.CupomApi", "Mongo.Services.CupomApi\Mongo.Services.CupomApi.csproj", "{3111F7D3-480B-4B7D-97DC-73E469C819B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3111F7D3-480B-4B7D-97DC-73E469C819B5} = {57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD76F186-91BD-422B-A8F9-634FDB0D80A3}
+	EndGlobalSection
+EndGlobal
