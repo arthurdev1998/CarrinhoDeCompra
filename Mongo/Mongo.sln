@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{40D9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{0B8E4121-A3BC-4F1C-954C-F26A8F934667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.CupomApi", "Mongo.Services.CupomApi\Mongo.Services.CupomApi.csproj", "{3111F7D3-480B-4B7D-97DC-73E469C819B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.CupomApi", "Mongo.Services.CupomApi\Mongo.Services.CupomApi.csproj", "{3111F7D3-480B-4B7D-97DC-73E469C819B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Web", "Mongo.Web\Mongo.Web.csproj", "{AEF487BB-F0BE-4731-82BD-23917B1F7330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +25,17 @@ Global
 		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3111F7D3-480B-4B7D-97DC-73E469C819B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF487BB-F0BE-4731-82BD-23917B1F7330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF487BB-F0BE-4731-82BD-23917B1F7330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF487BB-F0BE-4731-82BD-23917B1F7330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF487BB-F0BE-4731-82BD-23917B1F7330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3111F7D3-480B-4B7D-97DC-73E469C819B5} = {57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}
+		{AEF487BB-F0BE-4731-82BD-23917B1F7330} = {D9451700-9D7E-4D9F-B2AA-0DD2D3052789}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD76F186-91BD-422B-A8F9-634FDB0D80A3}
