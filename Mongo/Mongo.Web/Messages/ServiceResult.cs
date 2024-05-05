@@ -6,6 +6,11 @@ public class ServiceResult<T> : ServiceResult
 
     public ServiceResult(string message) : base(message)
     { 
+        
+    }
+    public ServiceResult()
+    {
+
     }
 }
 

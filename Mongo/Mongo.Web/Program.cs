@@ -1,7 +1,19 @@
+using Mongo.Web.Enums;
+using Mongo.Web.Services;
+using Mongo.Web.Services.IService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ICupomService, CupomService>();
+
+Sd.CupomApiBaseUrl = builder.Configuration["ServiceUrls:CupomApi"];
+
+builder.Services.AddScoped<IBaseService, BaseService>();
+builder.Services.AddScoped<ICupomService, CupomService>();
 
 var app = builder.Build();
 

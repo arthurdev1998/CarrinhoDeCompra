@@ -53,7 +53,7 @@ public class CupomController : ControllerBase
         }
     }
 
-    [HttpGet("cupom/code")]
+    [HttpGet("cupom/GetByCode/{code}")]
     public async Task<ServiceResult<CupomDto>> GetCupomByCode(string code)
     {
         try

@@ -6,5 +6,10 @@ public enum ApiTypes
     POST,
     PUT,
     DELETE,
-    PATCH   
+    PATCH
+}
+
+public static class Sd
+{
+    public static string? CupomApiBaseUrl { get; set; }
 }

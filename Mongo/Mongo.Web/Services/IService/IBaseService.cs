@@ -3,7 +3,7 @@ using Mongo.Web.Models;
 
 namespace Mongo.Web.Services.IService;
 
-public interface IBaseService<T>
+public interface IBaseService
 {
-    Task<ServiceResult<T?>> SendAsync(RequestDto requestDto);
+    Task<ServiceResult> SendAsync(RequestDto requestDto);
 }
