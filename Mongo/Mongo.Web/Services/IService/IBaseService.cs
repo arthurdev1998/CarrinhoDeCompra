@@ -5,5 +5,5 @@ namespace Mongo.Web.Services.IService;
 
 public interface IBaseService
 {
-    Task<ServiceResult> SendAsync(RequestDto requestDto);
+    Task<ServiceResult> SendAsync<T>(RequestDto requestDto);
 }

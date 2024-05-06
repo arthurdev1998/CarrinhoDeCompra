@@ -16,7 +16,7 @@ public class BaseService : IBaseService
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<ServiceResult> SendAsync(RequestDto requestDto)
+    public async Task<ServiceResult> SendAsync<T>(RequestDto requestDto)
     {
         try
         {
@@ -70,7 +70,17 @@ public class BaseService : IBaseService
 
                 default:
                     var apiContent = await apiResponse.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<ServiceResult>(apiContent);
+                    if (apiContent.StartsWith("["))
+                    {
+                        var apiListResponseDto = JsonConvert.DeserializeObject<List<T>>(apiContent) ?? throw new NullReferenceException(nameof(JsonConvert));
+
+                        return new ServiceResult<T>(apiListResponseDto);
+                    }
+
+                    var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent) ?? throw new NullReferenceException(nameof(JsonConvert));
+
+                    return new ServiceResult<T>(apiResponseDto);
+
             }
         }
         catch (Exception ex)
