@@ -1,4 +1,4 @@
-namespace Mongo.Web.Messages;
+namespace Mongo.Services.CupomApi.Messages;
 
 public class ResponseDto
 {
@@ -14,6 +14,11 @@ public class ResponseDto
 
     public ResponseDto(object result)
     {
-        Result = result;      
+        Result = result;
+    }
+
+    public ResponseDto()
+    {
+        
     }
 }

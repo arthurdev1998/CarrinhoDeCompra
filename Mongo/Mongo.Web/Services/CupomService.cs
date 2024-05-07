@@ -14,9 +14,9 @@ public class CupomService : ICupomService
         _baseService = baseService;
     }
 
-    public async Task<ServiceResult?> GetAllCupomAsync()
+    public async Task<ResponseDto?> GetAllCupomAsync()
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.GET,
             UrL = Sd.CupomApiBaseUrl + "/api/cupom"
@@ -25,9 +25,9 @@ public class CupomService : ICupomService
         return result;
     }
 
-    public async Task<ServiceResult>? GetCupomByCodeAsync(string code)
+    public async Task<ResponseDto?> GetCupomByCodeAsync(string code)
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.GET,
             UrL = Sd.CupomApiBaseUrl + $"/api/cupom/GetByCode/{code}"
@@ -36,9 +36,9 @@ public class CupomService : ICupomService
         return result;
     }
 
-    public async Task<ServiceResult>? GetCupomByIdAsync(int id)
+    public async Task<ResponseDto?> GetCupomByIdAsync(int id)
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.GET,
             UrL = Sd.CupomApiBaseUrl + $"/api/cupom/{id}"
@@ -47,9 +47,9 @@ public class CupomService : ICupomService
         return result;
     }
 
-    public async Task<ServiceResult>? InsertCupomAsync(CupomDto dto)
+    public async Task<ResponseDto?> InsertCupomAsync(CupomDto dto)
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.POST,
             Data = dto,
@@ -59,9 +59,9 @@ public class CupomService : ICupomService
         return result;
     }
 
-    public async Task<ServiceResult>? RemoveCupomAsync(int id)
+    public async Task<ResponseDto?> RemoveCupomAsync(int id)
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.DELETE,
             UrL = Sd.CupomApiBaseUrl + $"/api/cupom/{id}"
@@ -70,9 +70,9 @@ public class CupomService : ICupomService
         return result;
     }
 
-    public async Task<ServiceResult>? UpdateCupomAsync(CupomDto dto)
+    public async Task<ResponseDto?> UpdateCupomAsync(CupomDto dto)
     {
-        var result = await _baseService.SendAsync<CupomDto>(new RequestDto()
+        var result = await _baseService.SendAsync(new RequestDto()
         {
             ApiType = ApiTypes.PUT,
             Data = dto,

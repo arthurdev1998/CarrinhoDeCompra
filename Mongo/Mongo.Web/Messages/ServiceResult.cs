@@ -1,43 +1,49 @@
-﻿namespace Mongo.Web.Messages;
+﻿// namespace Mongo.Web.Messages;
 
-public class ServiceResult<T> : ServiceResult
-{
-    public T? Result { get; set; }
-    public List<T>? Results {get; set;}
+// public class ServiceResult<T> : ServiceResult
+// {
+//     public T? Result { get; set; }
+//     public List<T>? Results {get; set;}
 
-    public ServiceResult(string message) : base(message)
-    { 
+//     public ServiceResult(string message) : base(message)
+//     { 
         
-    }
+//     }
 
-    public ServiceResult(T value)
-    {
-        Result = value;
-    }
+//     public ServiceResult(T value) : base(value)
+//     {
+//         Result = value;
+//     }
 
-    public ServiceResult(List<T> values)
-    {
-        Results = values;
-    }
+//     public ServiceResult(List<T> values) : base(values)
+//     {
+//         Results = values;
+//     }
 
-    public ServiceResult()
-    {
+//     public ServiceResult()
+//     {
 
-    }
-}
+//     }
+// }
 
-public class ServiceResult 
-{   
-    public ICollection<string> ErrorMessages { get; set; } = [];
-    public bool HasError { get; set; } = false;
+// public class ServiceResult 
+// {   
+//     public object Resultado { get; set; } 
+//     public ICollection<string> ErrorMessages { get; set; } = [];
+//     public bool HasError { get; set; } = false;
 
-    public ServiceResult(string message)
-    {
-        HasError = true;
-        ErrorMessages.Add(message);
-    }
+//     public ServiceResult(string message)
+//     {
+//         HasError = true;
+//         ErrorMessages.Add(message);
+//     }
 
-    public ServiceResult()
-    {
-    }
-}
+//     public ServiceResult(object obj) 
+//     {
+//         Resultado = obj;
+//     }
+
+//     public ServiceResult()
+//     {
+//     }
+// }

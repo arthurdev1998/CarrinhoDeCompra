@@ -16,7 +16,7 @@ public class BaseService : IBaseService
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<ServiceResult> SendAsync<T>(RequestDto requestDto)
+    public async Task<ResponseDto> SendAsync(RequestDto requestDto)
     {
         try
         {
@@ -48,7 +48,7 @@ public class BaseService : IBaseService
                     message.Method = HttpMethod.Put;
                     break;
 
-                default: return new ServiceResult($"{nameof(requestDto.ApiType)} invalido");
+                default: return new ResponseDto($"{nameof(requestDto.ApiType)} invalido");
             }
 
             HttpResponseMessage? apiResponse;
@@ -57,35 +57,35 @@ public class BaseService : IBaseService
             switch (apiResponse.StatusCode)
             {
                 case HttpStatusCode.NotFound:
-                    return new ServiceResult(nameof(HttpStatusCode.NotFound));
+                    return new ResponseDto(nameof(HttpStatusCode.NotFound));
 
                 case HttpStatusCode.Forbidden:
-                    return new ServiceResult(nameof(HttpStatusCode.Forbidden));
+                    return new ResponseDto(nameof(HttpStatusCode.Forbidden));
 
                 case HttpStatusCode.Unauthorized:
-                    return new ServiceResult(nameof(HttpStatusCode.Unauthorized));
+                    return new ResponseDto(nameof(HttpStatusCode.Unauthorized));
 
                 case HttpStatusCode.InternalServerError:
-                    return new ServiceResult(nameof(HttpStatusCode.InternalServerError));
+                    return new ResponseDto(nameof(HttpStatusCode.InternalServerError));
 
                 default:
                     var apiContent = await apiResponse.Content.ReadAsStringAsync();
                     if (apiContent.StartsWith("["))
                     {
-                        var apiListResponseDto = JsonConvert.DeserializeObject<List<T>>(apiContent) ?? throw new NullReferenceException(nameof(JsonConvert));
+                        var apiListResponseDto = JsonConvert.DeserializeObject(apiContent) ?? throw new Exception(nameof(JsonConvert));
 
-                        return new ServiceResult<T>(apiListResponseDto);
+                        return new ResponseDto(apiListResponseDto);
                     }
 
-                    var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent) ?? throw new NullReferenceException(nameof(JsonConvert));
+                    var apiResponseDto = JsonConvert.DeserializeObject(apiContent) ?? throw new Exception(nameof(JsonConvert));
 
-                    return new ServiceResult<T>(apiResponseDto);
+                    return new ResponseDto(apiResponseDto);
 
             }
         }
         catch (Exception ex)
         {
-            return new ServiceResult(ex.Message);
+            return new ResponseDto(ex.Message);
         }
     }
 }

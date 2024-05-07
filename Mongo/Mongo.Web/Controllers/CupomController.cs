@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mongo.Web.Messages;
 using Mongo.Web.Models;
 using Mongo.Web.Services.IService;
 using Newtonsoft.Json;
@@ -21,7 +22,7 @@ namespace Mongo.Web.Controllers
 
             if (response != null && !response.HasError)
             {
-                list = JsonConvert.DeserializeObject<List<CupomDto>>(Convert.ToString(response));
+                list = JsonConvert.DeserializeObject<List<CupomDto>>(Convert.ToString(response.Result));
                 return View(list);
             }
 

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mongo.Services.CupomApi.Data;
@@ -35,7 +36,7 @@ public class CupomController : ControllerBase
     }
 
     [HttpGet("cupom/{id}")]
-    public async Task<ServiceResult<CupomDto>> GetCupomById(int id)
+    public async Task<ResponseDto> GetCupomById(int id)
     {
         try
         {
@@ -43,18 +44,18 @@ public class CupomController : ControllerBase
             if(obj == default)
                 throw new Exception("Id Duplicado ou inexistente");
 
-            return new ServiceResult<CupomDto>(_mapper.Map<CupomDto>(obj));
+            return new ResponseDto(_mapper.Map<CupomDto>(obj));
         }
 
         catch(Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return new ServiceResult<CupomDto>(ex.Message);
+            return new ResponseDto(ex.Message);
         }
     }
 
     [HttpGet("cupom/GetByCode/{code}")]
-    public async Task<ServiceResult<CupomDto>> GetCupomByCode(string code)
+    public async Task<ResponseDto> GetCupomByCode(string code)
     {
         try
         {
@@ -62,18 +63,18 @@ public class CupomController : ControllerBase
             if(obj == default)
                 throw new Exception("Id Duplicado ou inexistente");
 
-            return new ServiceResult<CupomDto>(_mapper.Map<CupomDto>(obj));
+            return new ResponseDto(_mapper.Map<CupomDto>(obj));
         }
 
         catch(Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return new ServiceResult<CupomDto>(ex.Message);
+            return new (ex.Message);
         }
     }
 
     [HttpPost("cupom")]
-    public async Task<ServiceResult<CupomDto>> AddCupom([FromBody]CupomDto cupom)
+    public async Task<ResponseDto> AddCupom([FromBody]CupomDto cupom)
     {
         try
         {
@@ -81,18 +82,18 @@ public class CupomController : ControllerBase
             await _db.AddAsync(entity);
             await _db.SaveChangesAsync();
 
-            return new ServiceResult<CupomDto>(cupom);
+            return new ResponseDto(cupom);
         }
 
         catch(Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return new ServiceResult<CupomDto>(ex.Message);
+            return new ResponseDto(ex.Message);
         }
     }
 
     [HttpPut("cupom")]
-    public async Task<ServiceResult<CupomDto>> UpdateCupom([FromBody]CupomDto cupom)
+    public async Task<ResponseDto> UpdateCupom([FromBody]CupomDto cupom)
     {
         try
         {
@@ -100,36 +101,35 @@ public class CupomController : ControllerBase
              _db.Update(entity);
             await _db.SaveChangesAsync();
 
-            return new ServiceResult<CupomDto>(cupom);
+            return new ResponseDto(cupom);
         }
 
         catch(Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return new ServiceResult<CupomDto>(ex.Message);
+            return new ResponseDto(ex.Message);
         }
     }
 
     [HttpDelete("cupom/{Id}")]
-    public async Task<ServiceResult> RemoveCupom(int id)
+    public async Task<ResponseDto> RemoveCupom(int id)
     {
         try
         {
             var entity = _db.Cupoms.OrderBy(x => x).FirstOrDefault(x => x.Id == id);
 
             if(entity == default)
-                return new ServiceResult("Sem conteudo");
+                return new ResponseDto("Sem conteudo");
 
             _db.Remove(entity);
             await _db.SaveChangesAsync();
 
-            return new ServiceResult();
+            return new ResponseDto();
         }
 
         catch(Exception ex)
         {
-            Console.WriteLine(ex.Message);
-            return new ServiceResult<CupomDto>(ex.Message);
+            return new ResponseDto(ex.Message);
         }
     }
 }
