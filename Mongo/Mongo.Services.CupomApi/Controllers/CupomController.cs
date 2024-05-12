@@ -22,17 +22,11 @@ public class CupomController : ControllerBase
     }
 
     [HttpGet("cupom")]
-    public async Task<IEnumerable<CupomDto>> GetAllCupons()
+    public async Task<List<CupomDto>> GetAllCupons()
     {
-        try
-        {
-           IEnumerable<Cupom> cupomList = await _db.Cupoms.ToListAsync();
-           return _mapper.Map<IEnumerable<CupomDto>>(cupomList);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var allCupons = await _db.Cupoms.ToListAsync();
+        
+        return _mapper.Map<List<CupomDto>>(allCupons);
     }
 
     [HttpGet("cupom/{id}")]
@@ -41,13 +35,13 @@ public class CupomController : ControllerBase
         try
         {
             var obj = await _db.Cupoms.SingleOrDefaultAsync(x => x.Id == id);
-            if(obj == default)
+            if (obj == default)
                 throw new Exception("Id Duplicado ou inexistente");
 
             return new ResponseDto(_mapper.Map<CupomDto>(obj));
         }
 
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             return new ResponseDto(ex.Message);
@@ -60,21 +54,21 @@ public class CupomController : ControllerBase
         try
         {
             var obj = await _db.Cupoms.FirstOrDefaultAsync(x => x.Code == code);
-            if(obj == default)
+            if (obj == default)
                 throw new Exception("Id Duplicado ou inexistente");
 
             return new ResponseDto(_mapper.Map<CupomDto>(obj));
         }
 
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return new (ex.Message);
+            return new(ex.Message);
         }
     }
 
     [HttpPost("cupom")]
-    public async Task<ResponseDto> AddCupom([FromBody]CupomDto cupom)
+    public async Task<ResponseDto> AddCupom([FromBody] CupomDto cupom)
     {
         try
         {
@@ -85,7 +79,7 @@ public class CupomController : ControllerBase
             return new ResponseDto(cupom);
         }
 
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             return new ResponseDto(ex.Message);
@@ -93,18 +87,18 @@ public class CupomController : ControllerBase
     }
 
     [HttpPut("cupom")]
-    public async Task<ResponseDto> UpdateCupom([FromBody]CupomDto cupom)
+    public async Task<ResponseDto> UpdateCupom([FromBody] CupomDto cupom)
     {
         try
         {
             var entity = _mapper.Map<Cupom>(cupom);
-             _db.Update(entity);
+            _db.Update(entity);
             await _db.SaveChangesAsync();
 
             return new ResponseDto(cupom);
         }
 
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             return new ResponseDto(ex.Message);
@@ -118,7 +112,7 @@ public class CupomController : ControllerBase
         {
             var entity = _db.Cupoms.OrderBy(x => x).FirstOrDefault(x => x.Id == id);
 
-            if(entity == default)
+            if (entity == default)
                 return new ResponseDto("Sem conteudo");
 
             _db.Remove(entity);
@@ -127,7 +121,7 @@ public class CupomController : ControllerBase
             return new ResponseDto();
         }
 
-        catch(Exception ex)
+        catch (Exception ex)
         {
             return new ResponseDto(ex.Message);
         }

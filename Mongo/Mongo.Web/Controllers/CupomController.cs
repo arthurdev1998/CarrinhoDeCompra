@@ -28,5 +28,46 @@ namespace Mongo.Web.Controllers
 
             return View(list);
         }
+
+        public async Task<IActionResult> CupomCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CupomCreate(CupomDto cupomDto)
+        {
+            if (ModelState.IsValid)
+            {
+                ResponseDto? response = await _cupomService.InsertCupomAsync(cupomDto);
+
+                if (response != null && !response.HasError)
+                {
+                    return RedirectToAction(nameof(CupomIndex));
+                }
+
+            }
+            
+            return View(cupomDto);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> CupomDelete(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                ResponseDto? response = await _cupomService.GetCupomByIdAsync(id);
+
+                if (response != null && !response.HasError)
+                {
+                    return RedirectToAction(nameof(CupomIndex));
+                }
+                
+
+
+            }
+
+            return View();
+        }
     }
 }
