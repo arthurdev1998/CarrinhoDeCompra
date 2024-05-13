@@ -14,6 +14,7 @@ Sd.CupomApiBaseUrl = builder.Configuration["ServiceUrls:CupomApi"];
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ICupomService, CupomService>();
+builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 
 var app = builder.Build();
 

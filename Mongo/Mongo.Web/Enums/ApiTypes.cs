@@ -12,4 +12,6 @@ public enum ApiTypes
 public static class Sd
 {
     public static string? CupomApiBaseUrl { get; set; }
+    public const string TokenCookie = "JWTToken";
+
 }
