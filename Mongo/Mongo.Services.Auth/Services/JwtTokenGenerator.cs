@@ -34,10 +34,6 @@ public class JwtTokenGenerator : IJwtTokenGenerator
 
         claimList.AddRange(roles.Select(x => new Claim(ClaimTypes.Role, x)));
 
-        // foreach(var item in roles)
-        // {
-        //     claimList.Add(new Claim(ClaimTypes.Role, item));
-        // }
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -48,7 +44,16 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
 
+        try 
+        {
         var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(token);
+        }
+        catch(Exception ex) 
+        {
+            Console.WriteLine(ex.Message.ToString());
+            return (ex.Message);
+        }
+        
     }
 }

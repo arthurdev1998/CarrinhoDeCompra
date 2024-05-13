@@ -1,5 +1,6 @@
 using AutoMapper;
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mongo.Services.CupomApi.Data;
@@ -10,6 +11,8 @@ using Mongo.Services.CupomApi.Messages;
 namespace Mongo.Services.CupomApi.Controllers;
 
 [Route("api")]
+[ApiController]
+[Authorize]
 public class CupomController : ControllerBase
 {
     private readonly AppDbContext _db;

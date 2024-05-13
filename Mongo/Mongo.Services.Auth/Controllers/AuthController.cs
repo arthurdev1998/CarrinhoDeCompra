@@ -37,7 +37,7 @@ public class AuthController : ControllerBase
         if (user == null)
             return BadRequest("usuario nao encontrado");
 
-        return Ok(user.Token);
+        return Ok(user);
     }
 
     [HttpPost("AssignRole")]
