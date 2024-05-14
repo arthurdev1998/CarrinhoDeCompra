@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.CupomApi", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Web", "Mongo.Web\Mongo.Web.csproj", "{AEF487BB-F0BE-4731-82BD-23917B1F7330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.Auth", "Mongo.Services.Auth\Mongo.Services.Auth.csproj", "{55E23AF4-0810-4901-B86A-A20A781B68A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.Auth", "Mongo.Services.Auth\Mongo.Services.Auth.csproj", "{55E23AF4-0810-4901-B86A-A20A781B68A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.Products", "Mongo.Services.Products\Mongo.Services.Products.csproj", "{3187DB9B-67A0-4F28-8209-463883462B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{55E23AF4-0810-4901-B86A-A20A781B68A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55E23AF4-0810-4901-B86A-A20A781B68A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55E23AF4-0810-4901-B86A-A20A781B68A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3187DB9B-67A0-4F28-8209-463883462B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3187DB9B-67A0-4F28-8209-463883462B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3187DB9B-67A0-4F28-8209-463883462B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3187DB9B-67A0-4F28-8209-463883462B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{3111F7D3-480B-4B7D-97DC-73E469C819B5} = {57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}
 		{AEF487BB-F0BE-4731-82BD-23917B1F7330} = {D9451700-9D7E-4D9F-B2AA-0DD2D3052789}
 		{55E23AF4-0810-4901-B86A-A20A781B68A3} = {57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}
+		{3187DB9B-67A0-4F28-8209-463883462B00} = {57CEAF38-02F4-4185-83E4-E0D7BB0D55BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD76F186-91BD-422B-A8F9-634FDB0D80A3}
