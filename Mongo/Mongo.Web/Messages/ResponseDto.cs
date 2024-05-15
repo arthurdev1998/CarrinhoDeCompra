@@ -1,6 +1,6 @@
 namespace Mongo.Web.Messages;
 
-public class ResponseDto
+public class ResponseDto 
 {
     public object? Result { get; set; }
     public bool HasError { get; set; } = false;
@@ -12,7 +12,7 @@ public class ResponseDto
         HasError = true;
     }
 
-    public ResponseDto(object result)
+    public ResponseDto(object result) 
     {
         Result = result;      
     }
