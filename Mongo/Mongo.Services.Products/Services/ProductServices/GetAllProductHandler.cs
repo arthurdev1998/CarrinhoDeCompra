@@ -17,6 +17,9 @@ public class GetAllProductHandler
     public async Task<ServiceResult<List<ProductDto>>> ExecuteAsync()
     {
         var products = await _productRepository.GetAllProducts();
+
+        if(products == null)
+            return new ServiceResult<List<ProductDto>>();
         
         var result = products.MapTo<List<ProductDto>>();
 

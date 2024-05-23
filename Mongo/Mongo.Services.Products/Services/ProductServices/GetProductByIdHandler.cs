@@ -20,7 +20,7 @@ public class GetProductByIdHandler
         var result = await _productRepository.GetByIdProduct(id);
 
         if(result == null)
-            return new ServiceResult<Product>();
+            return new ServiceResult<Product>("produto nao encontrado");
         
         return new ServiceResult<Product>(result.MapTo<Product>());
     }

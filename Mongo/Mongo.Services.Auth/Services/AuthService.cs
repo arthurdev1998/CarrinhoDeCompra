@@ -83,6 +83,7 @@ public class AuthService : IAuthService
 
             return userDto.ToString();
         }
+        
         else
         {
             return result.Errors.FirstOrDefault().Description;

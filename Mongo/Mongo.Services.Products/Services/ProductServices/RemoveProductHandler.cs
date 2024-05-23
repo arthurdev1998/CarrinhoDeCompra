@@ -1,5 +1,6 @@
 using Mongo.Services.Products.Data.Repositories;
 using Mongo.Services.Products.Messages;
+using Mongo.Services.Products.Models.Dtos;
 using Mongo.Services.Products.Security;
 
 namespace Mongo.Services.Products.Services.ProductServices;
@@ -21,7 +22,7 @@ public class RemoveProductHandler
         _productRepository.GetByIdProduct(id);
 
         if(entity == null)
-            return new ServiceResult();
+            return new ServiceResult<ProductDto>("ProductNotFound");
         
         await _productRepository.RemoveProduct(entity);
         await _unitOfWork.Commit();

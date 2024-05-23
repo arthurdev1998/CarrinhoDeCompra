@@ -50,7 +50,5 @@ public class AuthController : ControllerBase
         }
 
         return Ok(model.Role);
-
-        
     }
 }
