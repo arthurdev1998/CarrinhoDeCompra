@@ -23,13 +23,9 @@ public class ProductRepository : IProductRepository
         return await _db.Products.AsNoTracking().ToListAsync();
     }
 
-    public async Task<Product> GetByIdProduct(int id)
+    public async Task<Product?> GetByIdProduct(int id)
     {
         var entity = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
-
-        if (entity == default)
-            throw new KeyNotFoundException("item nao encontrado");
-
         return entity;
     }
 

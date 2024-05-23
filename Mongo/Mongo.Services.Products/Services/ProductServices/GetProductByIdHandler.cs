@@ -19,8 +19,8 @@ public class GetProductByIdHandler
     {
         var result = await _productRepository.GetByIdProduct(id);
 
-        if(result == default)
-            return new ServiceResult<Product>("Product Not Found");
+        if(result == null)
+            return new ServiceResult<Product>();
         
         return new ServiceResult<Product>(result.MapTo<Product>());
     }

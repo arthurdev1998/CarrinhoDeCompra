@@ -29,7 +29,7 @@ public class ServiceResult<T> : ServiceResult where T : class
 
 public class ServiceResult
 {
-    public object Resultado { get; set; }
+    public object? Resultado { get; set; }
     public ICollection<string> ErrorMessages { get; set; } = [];
     public bool HasError { get; set; } = false;
 
@@ -47,5 +47,4 @@ public class ServiceResult
     public ServiceResult()
     {
     }
-
 }

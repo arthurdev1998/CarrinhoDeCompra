@@ -22,4 +22,12 @@ public static class ProductDtoMapper
     {
         return src.Select(x => MapToProductDto(x)).ToList();
     }
+
+    public static void MapOver(this UpdateDto dto, Product product)
+    {
+        product.Name = dto.Name;
+        product.Price = dto.Price;
+        product.Description = dto.Description;
+        product.Category = dto.Category;
+    }
 }
